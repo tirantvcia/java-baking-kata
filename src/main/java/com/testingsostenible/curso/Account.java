@@ -3,11 +3,12 @@ package com.testingsostenible.curso;
 public class Account {
 	
 	TransactionRepository repository;
+	private StatementPrinter statementRepository;
 	
 
-	public Account(TransactionRepository repository) {
-		super();
+	public Account(TransactionRepository repository, StatementPrinter statementRepository) {
 		this.repository = repository;
+		this.statementRepository = statementRepository;
 	}
 
 	public void deposit(int number) {
@@ -19,5 +20,6 @@ public class Account {
     }
 
     public void printStatement() {
+    	this.statementRepository.print(repository.allTransactions());
     }
 }

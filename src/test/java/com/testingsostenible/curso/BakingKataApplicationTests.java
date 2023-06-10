@@ -12,14 +12,16 @@ class BakingKataApplicationTests {
 
 	private Console consoleSpy;
     private TransactionRepository addDepositSpy;
+    private StatementPrinter printer;
 	
 	private Account account = null;
 
 	@BeforeEach
 	public void init () {
+		printer = new StatementPrinter();
 		consoleSpy = mock(Console.class);
 		addDepositSpy = new TransactionRepository();
-		account = new Account(addDepositSpy);
+		account = new Account(addDepositSpy, printer);
 
 	}
 
