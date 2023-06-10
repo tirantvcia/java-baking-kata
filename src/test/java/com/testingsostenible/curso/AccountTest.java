@@ -21,4 +21,10 @@ public class AccountTest {
 		account.deposit(100);
     	verify(addDepositSpy).addDeposit(100);
     }
+	
+	@Test
+    void storesWithdrawalTransactionThroughoutRepository() {
+		account.withdraw(100);
+    	verify(addDepositSpy).addWithdrawal(100);
+    }
 }

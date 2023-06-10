@@ -6,4 +6,8 @@ public class TransactionRepository {
 		
 	}
 
+	public void addWithdrawal(int i) {
+		
+	}
+
 }

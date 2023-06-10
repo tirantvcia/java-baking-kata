@@ -14,7 +14,8 @@ public class Account {
 		this.repository.addDeposit(number);
     }
 
-    public void withdraw(int i) {
+    public void withdraw(int number) {
+    	this.repository.addWithdrawal(number);
     }
 
     public void printStatement() {
