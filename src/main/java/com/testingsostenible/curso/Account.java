@@ -1,7 +1,17 @@
 package com.testingsostenible.curso;
 
 public class Account {
-    public void deposit(int i) {
+	
+	TransactionRepository repository;
+	
+
+	public Account(TransactionRepository repository) {
+		super();
+		this.repository = repository;
+	}
+
+	public void deposit(int number) {
+		this.repository.addDeposit(number);
     }
 
     public void withdraw(int i) {

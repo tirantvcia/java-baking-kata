@@ -1,23 +1,26 @@
 package com.testingsostenible.curso;
 
+import static org.mockito.Mockito.*;
+
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.mockito.Mockito;
-import org.mockito.Spy;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
 class BakingKataApplicationTests {
 
 
-	@Spy
 	private Console consoleSpy;
-
-	private Account account;
+    private TransactionRepository addDepositSpy;
+	
+	private Account account = null;
 
 	@BeforeEach
-	void setUp() {
-		account = new Account();
+	public void init () {
+		consoleSpy = mock(Console.class);
+		addDepositSpy = new TransactionRepository();
+		account = new Account(addDepositSpy);
+
 	}
 
 	@Test
@@ -29,10 +32,10 @@ class BakingKataApplicationTests {
 
 		account.printStatement();
 
-		Mockito.verify(consoleSpy).log("Date | Amount | Balance");
-		Mockito.verify(consoleSpy).log("14/01/2022 | 2000 | 2500");
-		Mockito.verify(consoleSpy).log("13/01/2022 | -500 | 500");
-		Mockito.verify(consoleSpy).log("10/01/2022 | 1000 | 1000");
+		verify(consoleSpy).log("Date | Amount | Balance");
+		verify(consoleSpy).log("14/01/2022 | 2000 | 2500");
+		verify(consoleSpy).log("13/01/2022 | -500 | 500");
+		verify(consoleSpy).log("10/01/2022 | 1000 | 1000");
 	}
 
 
