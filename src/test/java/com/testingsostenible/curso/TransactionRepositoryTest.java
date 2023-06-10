@@ -30,5 +30,13 @@ class TransactionRepositoryTest {
 		List<Transaction> transactions = repository.allTransactions();
 		assertTrue(new Transaction(today, amount).equals(transactions.get(0)));
 	}
-
+	@Test
+	void storesWhitdrawTransactionForGivenAmout() {
+		
+		int amount = 100;
+		when(clock.todayAsString()).thenReturn(today);
+		repository.addWithdrawal(amount);
+		List<Transaction> transactions = repository.allTransactions();
+		assertTrue(new Transaction(today, -amount).equals(transactions.get(0)));
+	}
 }
