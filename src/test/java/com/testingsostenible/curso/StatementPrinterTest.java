@@ -9,13 +9,14 @@ import org.junit.jupiter.api.Test;
 
 
 class StatementPrinterTest {
+	private static final String HEADER = "Date | Amount | Balance";
 	Console console = mock(Console.class);
 	
 	@Test
 	void allwaysPrintsHeaderThroughoutConsole() {
 		StatementPrinter statementPrinter = new StatementPrinter(console);
 		statementPrinter.print(new ArrayList<>());
-		verify(console).log("Date | Amount | Balance");
+		verify(console).log(HEADER);
 	}
 
 }
