@@ -11,10 +11,17 @@ public class StatementPrinter {
 
 	public void print(List<Transaction> transactions) {
 		console.log("Date | Amount | Balance");
+		double runningBalance = 0.0;
 		if(transactions.size() > 0) {
+			
 			Transaction transaction = transactions.get(0);
-			console.log(String.format("%s | %.2f | %.2f", transaction.getToday(), transaction.getAmount(), transaction.getAmount()));
+			runningBalance += transaction.getAmount();
+			console.log(formatStatementLine(runningBalance, transaction));
 		}
+	}
+
+	private String formatStatementLine(double runningBalance, Transaction transaction) {
+		return String.format("%s | %.2f | %.2f", transaction.getToday(), transaction.getAmount(), runningBalance);
 	}
 
 }
