@@ -20,8 +20,9 @@ class BakingKataApplicationTests {
 	@BeforeEach
 	public void init () {
 		clock = new Clock();
-		printer = new StatementPrinter();
 		consoleSpy = mock(Console.class);
+		printer = new StatementPrinter(consoleSpy);
+		
 		addDepositSpy = new TransactionRepository(clock);
 		account = new Account(addDepositSpy, printer);
 
