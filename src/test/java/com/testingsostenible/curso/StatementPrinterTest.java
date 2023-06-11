@@ -24,7 +24,8 @@ class StatementPrinterTest {
 	@Test
 	void printsStatmentAccountIncludingGivenTransactionThroughoutConsole() {
 		StatementPrinter statementPrinter = new StatementPrinter(console);
-		List<Transaction> transactions = Arrays.asList(new Transaction("25/02/2022", 500.00));
+		Double amount = Double.valueOf(500);
+		List<Transaction> transactions = Arrays.asList(new Transaction("25/02/2022", amount));
 		statementPrinter.print(transactions);
 		verify(console).log(HEADER);
 		verify(console).log("25/02/2022 | 500.00 | 500.00");

@@ -13,12 +13,12 @@ public class TransactionRepository  {
 		this.transactions = new ArrayList<>();
 	}
 
-	public void addDeposit(int amount) {
+	public void addDeposit(Double amount) {
 		Transaction transaction = new Transaction(clock.todayAsString(), amount);
 		transactions.add(transaction);
 	}
 
-	public void addWithdrawal(int amount) {
+	public void addWithdrawal(Double amount) {
 		Transaction transaction = new Transaction(clock.todayAsString(), -amount);
 		transactions.add(transaction);
 	}

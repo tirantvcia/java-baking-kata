@@ -23,7 +23,7 @@ class TransactionRepositoryTest {
 	@Test
 	void storesDepositTransactionForGivenAmout() {
 		
-		int amount = 100;
+		double amount = 100.00;
 		when(clock.todayAsString()).thenReturn(today);
 		
 		repository.addDeposit(amount);
@@ -33,7 +33,7 @@ class TransactionRepositoryTest {
 	@Test
 	void storesWhitdrawTransactionForGivenAmout() {
 		
-		int amount = 100;
+		double amount = 100.00;
 		when(clock.todayAsString()).thenReturn(today);
 		repository.addWithdrawal(amount);
 		List<Transaction> transactions = repository.allTransactions();

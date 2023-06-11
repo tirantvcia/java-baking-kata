@@ -11,11 +11,11 @@ public class Account {
 		this.statementRepository = statementRepository;
 	}
 
-	public void deposit(int number) {
+	public void deposit(double number) {
 		this.repository.addDeposit(number);
     }
 
-    public void withdraw(int number) {
+    public void withdraw(double number) {
     	this.repository.addWithdrawal(number);
     }
 

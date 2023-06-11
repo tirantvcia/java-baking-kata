@@ -25,13 +25,13 @@ public class AccountTest {
 	@Test
     void storesDepositTransactionThroughoutRepository() {
 		account.deposit(100);
-    	verify(addDepositSpy).addDeposit(100);
+    	verify(addDepositSpy).addDeposit(100.00);
     }
 	
 	@Test
     void storesWithdrawalTransactionThroughoutRepository() {
 		account.withdraw(100);
-    	verify(addDepositSpy).addWithdrawal(100);
+    	verify(addDepositSpy).addWithdrawal(100.00);
     }
 	
 	@Test

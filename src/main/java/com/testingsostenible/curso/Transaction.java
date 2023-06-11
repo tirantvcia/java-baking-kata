@@ -2,7 +2,7 @@ package com.testingsostenible.curso;
 
 public class Transaction {
 
-	private int amount;
+	private Double amount;
 	private String today;
 	
 	
@@ -12,9 +12,21 @@ public class Transaction {
 
 
 
-	public Transaction(final String today, final int amount) {
+	public Transaction(final String today, final Double amount) {
 		this.today = today;
 		this.amount = amount;
+	}
+
+
+
+	public Double getAmount() {
+		return amount;
+	}
+
+
+
+	public String getToday() {
+		return today;
 	}
 
 
@@ -23,7 +35,7 @@ public class Transaction {
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + amount;
+		result = prime * result + ((amount == null) ? 0 : amount.hashCode());
 		result = prime * result + ((today == null) ? 0 : today.hashCode());
 		return result;
 	}
@@ -39,7 +51,10 @@ public class Transaction {
 		if (getClass() != obj.getClass())
 			return false;
 		Transaction other = (Transaction) obj;
-		if (amount != other.amount)
+		if (amount == null) {
+			if (other.amount != null)
+				return false;
+		} else if (!amount.equals(other.amount))
 			return false;
 		if (today == null) {
 			if (other.today != null)
@@ -48,5 +63,8 @@ public class Transaction {
 			return false;
 		return true;
 	}
+
+
+
 
 }
