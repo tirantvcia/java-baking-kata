@@ -13,6 +13,11 @@ public class StatementPrinter {
 
 	public void print(List<Transaction> transactions) {
 		console.log("Date | Amount | Balance");
+		printStatements(transactions);
+		
+	}
+
+	private void printStatements(List<Transaction> transactions) {
 		runningBalance = Double.valueOf(0);
 		transactions.stream()
 		.map(transaction -> {
@@ -23,7 +28,6 @@ public class StatementPrinter {
 					String[] splitTransactionInfo = s.split("::");
 					console.log(splitTransactionInfo[1]);
 				});
-		
 	}
 
 	private String formatStatementLine(double runningBalance, Transaction transaction) {
