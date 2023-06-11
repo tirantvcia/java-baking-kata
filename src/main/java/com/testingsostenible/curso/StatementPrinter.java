@@ -1,23 +1,29 @@
 package com.testingsostenible.curso;
 
+import java.util.Comparator;
 import java.util.List;
 
 public class StatementPrinter {
 
 	Console console = null;
+	Double runningBalance;
 	public StatementPrinter(Console console) {
 		this.console = console;
 	}
 
 	public void print(List<Transaction> transactions) {
 		console.log("Date | Amount | Balance");
-		double runningBalance = 0.0;
-		if(transactions.size() > 0) {
-			
-			Transaction transaction = transactions.get(0);
+		runningBalance = Double.valueOf(0);
+		transactions.stream()
+		.map(transaction -> {
 			runningBalance += transaction.getAmount();
-			console.log(formatStatementLine(runningBalance, transaction));
-		}
+			return String.valueOf(transaction.getTodayLong()).concat("::").concat(formatStatementLine(runningBalance, transaction));
+		}).sorted(Comparator.reverseOrder()).forEach(
+				s -> {
+					String[] splitTransactionInfo = s.split("::");
+					console.log(splitTransactionInfo[1]);
+				});
+		
 	}
 
 	private String formatStatementLine(double runningBalance, Transaction transaction) {

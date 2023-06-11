@@ -1,5 +1,11 @@
 package com.testingsostenible.curso;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.ZoneId;
+import java.time.ZonedDateTime;
+import java.time.format.DateTimeFormatter;
+
 public class Transaction {
 
 	private Double amount;
@@ -30,6 +36,12 @@ public class Transaction {
 	}
 
 
+	public Long getTodayLong() {
+		DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+		LocalDateTime date = LocalDate.parse(today, dateFormatter).atStartOfDay();
+		ZonedDateTime zoneDateTimeInMadrid = date.atZone(ZoneId.of("Europe/Madrid"));
+		return zoneDateTimeInMadrid.toEpochSecond();
+	}
 
 	@Override
 	public int hashCode() {
